@@ -1,0 +1,73 @@
+if game.PlaceId == 155615604 then
+    local gg       = false
+    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+    local Window  = Library.CreateLib("Prison Life", "Sentinel")
+    
+    local Main = Window:NewTab("Main")
+    local MainSection = Main:NewSection("Main")
+    
+    local player          = Window:NewTab("Player")
+    local PlayerSection   = player:NewSection("Slide")
+    local ToggleSection   = player:NewSection("Toggle")
+    local ButtonSection   = player:NewSection("Button")
+    local TeleportSection = player:NewSection("Teleport")
+    
+    local Game        = Window:NewTab("Game")
+    local GameSection = Game:NewSection("Slide")
+    local GameSection = Game:NewSection("Toggle")
+    
+    MainSection:NewDropdown("Give Gun", "Gives the localplayer a gun", {"M9", "Remington 870", "AK-47"}, function(v)
+        local A_1 = game:GetService("Workspace")["Prison_ITEMS"].giver[v].ITEMPICKUP
+        local Event = game:GetService("Workspace").Remote.ItemHandler
+        Event:InvokeServer(A_1)
+    end)
+    
+     PlayerSection:NewSlider("WalkSpeed", "Changes the walkspeed", 500, 16, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = v
+    end)
+ 
+    PlayerSection:NewSlider("JumpPower", "Changes the jumppower", 250, 50, function(v)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = v
+    end)
+    ToggleSection:NewToggle("Noclip", "No Clip to the wall", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+
+end)
+
+ToggleSection:NewToggle("Fly", "Flying to the moon", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+ToggleSection:NewToggle("Infinite Jump", "Jumping like a bunny", function(state)
+    if state then
+        
+    else
+        print("Toggle Off")
+    end
+end)
+
+GameSection:NewToggle("X-Ray", "See through the wall", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+
+end)
+
+ButtonSection:NewButton("God Mode", "Never Die", function()
+    print("Clicked")
+end)
+
+TeleportsSection:NewDropdown("Teleports Player", "Teleport to the player", {game.Players.LocalPlayer}, function(v)
+        
+    end)
+end
